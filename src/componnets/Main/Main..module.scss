@@ -1,0 +1,89 @@
+.main__container {
+  position: relative;
+  overflow: hidden;
+
+  .main__screensaver {
+    flex-direction: column;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #f6f6f6;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }
+    .main__screensaver_theam {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, black, transparent);
+      left: 0;
+    }
+
+    .main__screensaver_info {
+      flex: 0.5;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+
+      @media (max-width: 768px) {
+        flex: 1;
+
+        text-align: center;
+      }
+
+      .main__screensaver_title {
+        font-size: 36px;
+        font-weight: bold;
+        color: #fafafa;
+        margin-bottom: 20px;
+      }
+
+      .main__screensaver_button {
+        background-color: #ff6b6b;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin-right: 10px;
+        cursor: pointer;
+        transition:
+          background-color 0.3s ease,
+          transform 0.2s ease;
+
+        &:hover {
+          background-color: #ff8f8f;
+          transform: scale(1.05);
+        }
+      }
+
+      .main__screensaver_relesed {
+        color: #cacaca;
+      }
+      .main__screensaver_released,
+      .main__screensaver_overview {
+        font-size: 20px; /* Увеличил размер текста */
+        color: #ffffff; /* Более яркий цвет */
+        margin-top: 15px; /* Увеличил отступ сверху */
+      }
+    }
+
+    .main__screensaver_img {
+      flex: 0.5;
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+
+      @media (max-width: 768px) {
+        flex: 1;
+      }
+    }
+  }
+}

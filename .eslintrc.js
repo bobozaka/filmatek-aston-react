@@ -5,13 +5,11 @@ module.exports = {
   },
   extends: [
     'airbnb',
+    'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'plagin:react/recommended',
-    'plagin:prettier/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
     'prettier',
-    'prettier/react',
-    'plagin:import/warnings',
-    'plagin:import/errors',
   ],
   overrides: [
     {
@@ -28,18 +26,19 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', 'prettier'],
-
+  plugins: ['prettier', 'react'],
   rules: {
     'no-console': 'warn',
-    'prettier/prettier': 'error',
-    'import/prefer-default-export': 'off',
-    'react/jsx-no-useless-fragment': 'error',
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-one-expression-per-line': 0,
+    'react/destructuring-assignment': 0,
     'import/order': [
       'error',
       {
         groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
       },
     ],
+    indent: 'off',
   },
 };
