@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { FaHart, FaRegHeart } from 'react-icons/fa';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import styles from './Row.module.scss';
 
@@ -40,7 +38,7 @@ function Row({ title, fetchURL }) {
             <img src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`} alt={item.title} />
             <div>
               <p className={styles.row__card_title}>{item.title}</p>
-              <p className={styles.row__card_like}>{like ? <FaHart /> : <FaRegHeart />}</p>
+              <p className={styles.row__card_like}>{like ? <FaHeart /> : <FaRegHeart />}</p>
             </div>
           </div>
         ))}
