@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import PropTypes from 'prop-types';
+import Movie from '../Movie/Movie';
 import styles from './Row.module.scss';
 
 function useFetch(url) {
@@ -27,26 +27,20 @@ function useFetch(url) {
 
 function Row({ title, fetchURL }) {
   const movies = useFetch(fetchURL);
-  const [like, setLike] = useState(false);
 
   return (
     <div className={styles.row__container}>
       <h2 className={styles.row__title}>{title}</h2>
-      <div className={styles.row__slider} id="slider">
-        {movies.map((item) => (
-          <div className={styles.row__card} key={item.id}>
-            <img src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`} alt={item.title} />
-            <div>
-              <p className={styles.row__card_title}>{item.title}</p>
-              <p className={styles.row__card_like}>{like ? <FaHeart /> : <FaRegHeart />}</p>
-            </div>
-          </div>
-        ))}
+      <div className={styles.row__slider_contaner}>
+        <div className={styles.row__slider} id="slider">
+          {movies.map((item) => (
+            <Movie item={item} key={item.id} />
+          ))}
+        </div>
       </div>
     </div>
   );
 }
-
 Row.propTypes = {
   title: PropTypes.string.isRequired,
   fetchURL: PropTypes.string.isRequired,
