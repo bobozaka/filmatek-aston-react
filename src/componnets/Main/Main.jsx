@@ -1,25 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import requests from '../../Requests';
+import truncateString from '../../utils';
+import Loading from '../Loading/Loading';
 import style from './Main..module.scss';
 
 function Main() {
-  const [movies, setMovies] = useState([]);
-  const movie = movies[Math.floor(Math.random() * movies.length)];
+  const [movies, setMovies] = useState(null);
 
   useEffect(() => {
-    axios.get(requests.requestPopular).then((response) => {
-      setMovies(response.data.results);
-    });
-  }, []);
+    axios
+      .get(requests.requestPopular)
+      .then((response) => {
+        setMovies(response.data.results);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [requests.requestPopular]);
 
-  const truncateString = (str, num) => {
-    if (str?.length > num) {
-      return `${str.slice(0, num)}...`;
-    }
-    return str;
-  };
+  let movie;
 
+  if (movies) {
+    movie = movies[Math.floor(Math.random() * movies.length)];
+  }
+
+  if (!movie) {
+    return <Loading />;
+  }
+
+  const truncatedOverview = truncateString(movie.overview, 150);
   return (
     <div className={style.main__container}>
       <div className={style.main__screensaver}>
@@ -40,7 +50,7 @@ function Main() {
             </button>
           </div>
           <p className={style.main__screensaver_relesed}>Released:{`${movie?.release_date}`}</p>
-          <p className={style.main__screensaver_overview}>{truncateString(movie?.overview, 150)}</p>
+          <p className={style.main__screensaver_overview}>{truncatedOverview}</p>
         </div>
       </div>
     </div>
