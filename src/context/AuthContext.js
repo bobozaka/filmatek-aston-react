@@ -38,6 +38,6 @@ export function AuthContextProvider({ children }) {
 AuthContextProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
-export function UserAuth() {
+export function useUserAuth() {
   return useContext(AuthContext);
 }
