@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { UserAuth } from '../../context/AuthContext';
+import { useUserAuth } from '../../context/AuthContext';
 import styles from './Signup.module.scss';
 
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { signUp } = UserAuth();
+  const { signUp } = useUserAuth();
   const navigate = useNavigate();
 
   const handleSumbit = async (e) => {
