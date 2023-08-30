@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { UserAuth } from '../../context/AuthContext';
+import { useUserAuth } from '../../context/AuthContext';
 import styles from './Login.module.scss';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const { logIn } = UserAuth();
+  const { logIn } = useUserAuth();
   const navigate = useNavigate();
 
   const handleSumbit = async (e) => {
