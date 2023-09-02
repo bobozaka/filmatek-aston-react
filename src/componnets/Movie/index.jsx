@@ -7,14 +7,13 @@ import { db } from '../../firebase';
 import styles from './Movie.module.scss';
 
 function Movie({ item }) {
-  const [like, setLike] = useState(false);
   const { user } = useUserAuth();
+  const [like, setLike] = useState(false);
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     if (user?.email) {
       const movieRef = doc(db, 'users', `${user?.email}`);
-
       const getUserDocument = async () => {
         try {
           const userDoc = await getDoc(movieRef);
@@ -35,33 +34,29 @@ function Movie({ item }) {
   }, [user?.email, item.id]);
 
   const toggleSave = async () => {
-    if (user?.email) {
-      setLike(!like);
-      setSaved(!saved);
-      try {
-        const movieRef = doc(db, 'users', `${user?.email}`);
-        if (saved) {
-          await updateDoc(movieRef, {
-            saveShows: arrayRemove({
-              id: item.id,
-              title: item.title,
-              img: item.backdrop_path,
-            }),
-          });
-        } else {
-          await updateDoc(movieRef, {
-            saveShows: arrayUnion({
-              id: item.id,
-              title: item.title,
-              img: item.backdrop_path,
-            }),
-          });
-        }
-      } catch (error) {
-        console.error('Error saving/deleting movie:', error);
-      }
-    } else {
+    if (!user?.email) {
       alert('Please log in to save a movie');
+      return;
+    }
+
+    setLike(!like);
+    setSaved(!saved);
+
+    const movieRef = doc(db, 'users', `${user?.email}`);
+    const movieData = {
+      id: item.id,
+      title: item.title,
+      img: item.backdrop_path,
+    };
+
+    try {
+      const updateData = saved
+        ? { saveShows: arrayRemove(movieData) }
+        : { saveShows: arrayUnion(movieData) };
+
+      await updateDoc(movieRef, updateData);
+    } catch (error) {
+      console.error(`Error ${saved ? 'deleting' : 'saving'} movie:`, error);
     }
   };
 
