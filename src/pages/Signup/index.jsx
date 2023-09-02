@@ -20,6 +20,7 @@ function Signup() {
   };
   return (
     <div className={styles.signup__container}>
+      <div className={styles.signup__theam} />
       <img
         className={styles.signup__img}
         src="https://pressa.tv/uploads/posts/2020-01/1579194185_pressa_tv_glass.jpeg"
