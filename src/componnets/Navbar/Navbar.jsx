@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { UserAuth } from '../../context/AuthContext';
+import { useUserAuth } from '../../context/AuthContext';
 import style from './Navbar.module.scss';
 
 function Navbar() {
-  const { user, logOut } = UserAuth();
+  const { user, logOut } = useUserAuth();
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {

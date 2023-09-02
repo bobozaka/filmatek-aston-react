@@ -3,7 +3,7 @@ import axios from 'axios';
 import requests from '../../Requests';
 import truncateString from '../../utils';
 import Loading from '../Loading/Loading';
-import style from './Main..module.scss';
+import style from './Main.module.scss';
 
 function Main() {
   const [movies, setMovies] = useState(null);
