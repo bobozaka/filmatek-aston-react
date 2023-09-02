@@ -1,6 +1,6 @@
 import React from 'react';
-import Main from '../componnets/Main/Main';
-import Row from '../componnets/Row/Row';
+import Main from '../componnets/Main';
+import Row from '../componnets/Row';
 import requests from '../Requests';
 
 function Home() {
