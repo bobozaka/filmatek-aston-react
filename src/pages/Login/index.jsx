@@ -23,6 +23,7 @@ function Login() {
   };
   return (
     <div className={styles.login__container}>
+      <div className={styles.login__theam} />
       <img
         className={styles.login__img}
         src="https://pressa.tv/uploads/posts/2020-01/1579194185_pressa_tv_glass.jpeg"

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import Movie from '../Movie/Movie';
+import Movie from '../Movie';
 import styles from './Row.module.scss';
 
 function useFetch(url) {

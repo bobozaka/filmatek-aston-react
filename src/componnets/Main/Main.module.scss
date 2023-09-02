@@ -14,12 +14,14 @@
       flex-direction: column;
       text-align: center;
     }
+
     .main__screensaver_theam {
       position: absolute;
       width: 100%;
       height: 100%;
       background: linear-gradient(to right, black, transparent);
       left: 0;
+      z-index: 1; /* Добавляем z-index, чтобы затемнение было над изображением */
     }
 
     .main__screensaver_info {
@@ -33,10 +35,10 @@
       top: 50%;
       left: 20px;
       transform: translateY(-50%);
+      z-index: 2; /* Устанавливаем z-index выше, чем у затемнения */
 
       @media (max-width: 768px) {
         flex: 1;
-
         text-align: center;
       }
 
@@ -65,14 +67,11 @@
         }
       }
 
-      .main__screensaver_relesed {
-        color: #cacaca;
-      }
       .main__screensaver_released,
       .main__screensaver_overview {
-        font-size: 20px; /* Увеличил размер текста */
-        color: #ffffff; /* Более яркий цвет */
-        margin-top: 15px; /* Увеличил отступ сверху */
+        font-size: 20px;
+        color: #ffffff;
+        margin-top: 15px;
       }
     }
 
