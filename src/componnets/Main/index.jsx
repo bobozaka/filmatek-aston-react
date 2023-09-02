@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import requests from '../../Requests';
-import truncateString from '../../utils';
+import truncateString, { redirectToTrailer } from '../../utils';
 import Loading from '../Loading';
 import styles from './Main.module.scss';
 
@@ -29,6 +29,10 @@ function Main() {
     return <Loading />;
   }
 
+  const playTrailer = () => {
+    redirectToTrailer(movie.id);
+  };
+
   const truncatedOverview = truncateString(movie.overview, 150);
   return (
     <div className={styles.main__container}>
@@ -42,11 +46,8 @@ function Main() {
         <div className={styles.main__screensaver_info}>
           <h1 className={styles.main__screensaver_title}>{movie?.title}</h1>
           <div>
-            <button type="button" className={styles.main__screensaver_button}>
+            <button type="button" onClick={playTrailer} className={styles.main__screensaver_button}>
               Play
-            </button>
-            <button type="button" className={styles.main__screensaver_button}>
-              Watch later
             </button>
           </div>
           <p className={styles.main__screensaver_relesed}>Released:{`${movie?.release_date}`}</p>
