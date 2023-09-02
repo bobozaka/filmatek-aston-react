@@ -21,7 +21,7 @@
       height: 100%;
       background: linear-gradient(to right, black, transparent);
       left: 0;
-      z-index: 1; /* Добавляем z-index, чтобы затемнение было над изображением */
+      z-index: 1;
     }
 
     .main__screensaver_info {
@@ -35,7 +35,7 @@
       top: 50%;
       left: 20px;
       transform: translateY(-50%);
-      z-index: 2; /* Устанавливаем z-index выше, чем у затемнения */
+      z-index: 2; 
 
       @media (max-width: 768px) {
         flex: 1;
