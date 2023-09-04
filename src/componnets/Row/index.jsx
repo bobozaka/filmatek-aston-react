@@ -37,7 +37,7 @@ function Row({ title, fetchURL }) {
       <div className={`${styles.row__slider} perfect-scrollbar-container`}>
         <PerfectScrollbar
           options={{
-            suppressScrollX: false, // Оставляем горизонтальный скролл включенным
+            suppressScrollX: false, 
             wheelPropagation: false,
           }}
         >
