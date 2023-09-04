@@ -3,7 +3,7 @@
   width: 100%;
   text-align: center;
   color: white;
-  display: flex; /* Добавляем flex для выравнивания по вертикали */
+  display: flex;
   flex-direction: column;
 
   &::after {
@@ -28,12 +28,12 @@
 .account__title {
   position: absolute;
   top: 20%;
-  left: 0; /* Перемещаем текст влево */
+  left: 0; 
   right: 0;
   padding: 1rem;
   font-size: 1.5rem;
   font-weight: bold;
-  text-align: left; /* Выравниваем текст по левому краю */
+  text-align: left;
   z-index: 2;
 }
 

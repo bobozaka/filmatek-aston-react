@@ -14,7 +14,7 @@
 
 .saved__slider {
   display: flex;
-  flex-wrap: wrap; /* Добавляем свойство flex-wrap: wrap; */
+  flex-wrap: wrap; 
   gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
@@ -22,7 +22,7 @@
 }
 
 .saved__card {
-  flex: 0 0 calc(33.33% - 20px); /* Изменяем ширину карточек */
+  flex: 0 0 calc(33.33% - 20px); 
   cursor: pointer;
   overflow: hidden;
   background-color: transparent;
