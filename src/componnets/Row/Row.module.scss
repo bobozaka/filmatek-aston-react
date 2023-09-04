@@ -13,15 +13,19 @@
 
 .row__slider {
   display: flex;
-  overflow-x: scroll;
   flex-wrap: nowrap;
-  position: relative;
   white-space: nowrap;
-  scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: auto;
 
   @media (max-width: 768px) {
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .row__link {
+    text-decoration: none;
+    margin-right: 5px;
   }
 }
 
@@ -29,4 +33,10 @@
   font-size: 24px;
   text-align: center;
   margin-top: 10px;
+}
+
+.horizontalContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }

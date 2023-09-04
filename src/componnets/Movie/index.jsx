@@ -71,9 +71,13 @@ function Movie({ item }) {
         <p className={styles.movie__card_title}>{item.title}</p>
         <button
           type="button"
-          onClick={toggleSave}
+          onClick={(e) => {
+            e.stopPropagation(); 
+            toggleSave();
+          }}
           onKeyPress={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
+              e.stopPropagation(); 
               toggleSave();
             }
           }}
