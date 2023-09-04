@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUserAuth } from '../../context/AuthContext';
+import SearchBar from '../SearchBar';
 import styles from './Navbar.module.scss';
 
 function Navbar() {
@@ -19,6 +20,7 @@ function Navbar() {
       <Link to="/">
         <h1 className={styles.navbar__logo}>Flixster</h1>
       </Link>
+      <SearchBar />
       {user?.email ? (
         <div>
           <Link to="/account">

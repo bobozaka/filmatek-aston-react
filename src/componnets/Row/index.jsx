@@ -1,6 +1,9 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import 'react-perfect-scrollbar/dist/css/styles.css';
+import axios from 'axios';
 import Movie from '../Movie';
 import styles from './Row.module.scss';
 
@@ -31,16 +34,28 @@ function Row({ title, fetchURL }) {
   return (
     <div className={styles.row__container}>
       <h2 className={styles.row__title}>{title}</h2>
-      <div className={styles.row__slider_contaner}>
-        <div className={styles.row__slider} id="slider">
-          {movies.map((item) => (
-            <Movie item={item} key={item.id} />
-          ))}
-        </div>
+      <div className={`${styles.row__slider} perfect-scrollbar-container`}>
+        <PerfectScrollbar
+          options={{
+            suppressScrollX: false, // Оставляем горизонтальный скролл включенным
+            wheelPropagation: false,
+          }}
+        >
+          <div className="perfect-scrollbar-content">
+            <div className={styles.horizontalContainer}>
+              {movies.map((item) => (
+                <Link key={item.id} to={`/movie/${item.id}`} className={styles.row__link}>
+                  <Movie item={item} />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </PerfectScrollbar>
       </div>
     </div>
   );
 }
+
 Row.propTypes = {
   title: PropTypes.string.isRequired,
   fetchURL: PropTypes.string.isRequired,

@@ -1,0 +1,57 @@
+.searchBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  position: relative; /* Добавьте позицию relative */
+
+  input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+
+  button {
+    background-color: #e32b2b;
+    color: white;
+    border: none;
+    border-radius: 0 0 5px 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #5c645d;
+    }
+  }
+
+  ul.results {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    position: absolute;
+    top: 100%; /* Результаты поиска будут располагаться под полем ввода */
+    left: 0;
+    margin: 4px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-height: 200px;
+    overflow-y: auto;
+    flex-direction: column;
+
+    li {
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #f2f2f2;
+      }
+    }
+  }
+}
