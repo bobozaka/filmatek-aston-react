@@ -72,12 +72,12 @@ function Movie({ item }) {
         <button
           type="button"
           onClick={(e) => {
-            e.stopPropagation(); // Предотвращаем всплытие события
+            e.stopPropagation(); 
             toggleSave();
           }}
           onKeyPress={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
-              e.stopPropagation(); // Предотвращаем всплытие события
+              e.stopPropagation(); 
               toggleSave();
             }
           }}
