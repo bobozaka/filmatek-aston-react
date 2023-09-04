@@ -1,6 +1,6 @@
 .navbar__container {
-  position: fixed; /* Используем position: fixed для фиксированного расположения */
-  top: 0; /* Закрепляем Navbar вверху страницы */
+  position: fixed;
+  top: 0; 
   left: 0;
   right: 0;
   display: flex;
@@ -9,7 +9,7 @@
   padding: 4px;
   z-index: 100;
   width: 100%;
-  height: 80px; /* Задаем фиксированную высоту Navbar */
+  height: 80px; 
 
   @media (max-width: 768px) {
     flex-direction: column;
