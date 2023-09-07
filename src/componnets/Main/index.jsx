@@ -1,28 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import requests from '../../Requests';
+import { useFetchPopularQuery } from '../../redux/api';
 import truncateString, { redirectToTrailer } from '../../utils';
 import Loading from '../Loading';
 import styles from './Main.module.scss';
 
 function Main() {
-  const [movies, setMovies] = useState(null);
+  const { data: movies, isLoading, isError } = useFetchPopularQuery();
+  const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(requests.requestPopular)
-      .then((response) => {
-        setMovies(response.data.results);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [requests.requestPopular]);
+    if (movies && movies.results && movies.results.length > 0) {
+      const randomIndex = Math.floor(Math.random() * movies.results.length);
+      setMovie(movies.results[randomIndex]);
+    }
+  }, [movies]);
 
-  let movie;
+  if (isLoading) {
+    return <Loading />;
+  }
 
-  if (movies) {
-    movie = movies[Math.floor(Math.random() * movies.length)];
+  if (isError) {
+    return <div>Error loading data</div>;
   }
 
   if (!movie) {
@@ -34,6 +32,7 @@ function Main() {
   };
 
   const truncatedOverview = truncateString(movie.overview, 150);
+
   return (
     <div className={styles.main__container}>
       <div className={styles.main__screensaver}>
@@ -50,7 +49,7 @@ function Main() {
               Play
             </button>
           </div>
-          <p className={styles.main__screensaver_relesed}>Released:{`${movie?.release_date}`}</p>
+          <p className={styles.main__screensaver_relesed}>Released: {movie?.release_date}</p>
           <p className={styles.main__screensaver_overview}>{truncatedOverview}</p>
         </div>
       </div>

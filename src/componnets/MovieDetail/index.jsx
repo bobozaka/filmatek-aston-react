@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieData } from '../../utils';
-import styles from './MovieDetail.module.scss'; // Импорт стилей
+import styles from './MovieDetail.module.scss';
 
 function MovieDetail() {
   const { movieId } = useParams();
@@ -15,7 +15,7 @@ function MovieDetail() {
         }
 
         const movieData = await fetchMovieData(movieId);
-        setMovie(movieData); // Устанавливаем полученные данные в состояние
+        setMovie(movieData);
       } catch (error) {
         console.error('Error fetching movie data:', error);
       }
@@ -25,7 +25,7 @@ function MovieDetail() {
   }, [movieId]);
 
   if (!movie) {
-    return <div className={styles.loading}>Loading...</div>; // Используем стиль из модуля
+    return <div className={styles.loading}>Loading...</div>;
   }
 
   return (

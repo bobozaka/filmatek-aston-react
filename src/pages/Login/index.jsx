@@ -12,7 +12,7 @@ function Login() {
 
   const handleSumbit = async (e) => {
     e.preventDefault();
-    setError(''); // Изменено на setError('')
+    setError('');
     try {
       await logIn(email, password);
       navigate('/');
