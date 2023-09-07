@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import { arrayUnion, arrayRemove, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { useUserAuth } from '../../context/AuthContext';
@@ -8,8 +8,7 @@ import styles from './Movie.module.scss';
 
 function Movie({ item }) {
   const { user } = useUserAuth();
-  const [like, setLike] = useState(false);
-  const [saved, setSaved] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
     if (user?.email) {
@@ -21,7 +20,7 @@ function Movie({ item }) {
             const userData = userDoc.data();
             if (userData && userData.saveShows) {
               const isMovieSaved = userData.saveShows.some((savedItem) => savedItem.id === item.id);
-              setSaved(isMovieSaved);
+              setIsSaved(isMovieSaved);
             }
           }
         } catch (error) {
@@ -39,8 +38,7 @@ function Movie({ item }) {
       return;
     }
 
-    setLike(!like);
-    setSaved(!saved);
+    setIsSaved(!isSaved);
 
     const movieRef = doc(db, 'users', `${user?.email}`);
     const movieData = {
@@ -50,13 +48,13 @@ function Movie({ item }) {
     };
 
     try {
-      const updateData = saved
+      const updateData = isSaved
         ? { saveShows: arrayRemove(movieData) }
         : { saveShows: arrayUnion(movieData) };
 
       await updateDoc(movieRef, updateData);
     } catch (error) {
-      console.error(`Error ${saved ? 'deleting' : 'saving'} movie:`, error);
+      console.error(`Error ${isSaved ? 'deleting' : 'saving'} movie:`, error);
     }
   };
 
@@ -68,22 +66,23 @@ function Movie({ item }) {
         <div>No Image Available</div>
       )}
       <div>
-        <p className={styles.movie__card_title}>{item.title}</p>
         <button
           type="button"
           onClick={(e) => {
-            e.stopPropagation(); 
+            e.stopPropagation();
             toggleSave();
+            e.preventDefault();
           }}
           onKeyPress={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
-              e.stopPropagation(); 
+              e.stopPropagation();
               toggleSave();
+              e.preventDefault();
             }
           }}
           className={styles.movie__card_like}
         >
-          {saved ? <FaHeart /> : <FaRegHeart />}
+          {isSaved ? <FaHeart /> : <FaRegHeart />}
         </button>
       </div>
     </div>

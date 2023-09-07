@@ -1,47 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { searchMovies, fetchMovieData } from '../../utils';
+import {
+  setSearchResults,
+  clearSearchResults,
+} from '../../redux/reducers/slices/searchResultsSlice';
 import styles from './SearchBar.module.scss';
 
 function SearchBar() {
   const [query, setQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [showResults, setShowResults] = useState(false);
+  const searchResults = useSelector((state) => state.app.searchResults);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const searchMoviesHandler = async () => {
+  const searchMoviesHandler = async (newQuery) => {
     try {
-      setLoading(true);
-
-      const results = await searchMovies(query);
-
-      setSearchResults(results);
-      setShowResults(true);
+      const results = await searchMovies(newQuery);
+      dispatch(setSearchResults(results));
     } catch (error) {
       console.error('Error fetching search results:', error);
-    } finally {
-      setLoading(false);
     }
   };
 
-  useEffect(() => {
-    if (!query) {
-      setShowResults(false);
-      return;
-    }
-
-    searchMoviesHandler();
-  }, [query]);
-
   const handleItemClick = async (movie) => {
-    setShowResults(false);
-
     try {
       const movieData = await fetchMovieData(movie.id);
       navigate(`/movie/${movie.id}`, { state: { movieData } });
+      setQuery('');
+      dispatch(clearSearchResults());
     } catch (error) {
       console.error('Error fetching movie data:', error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const newQuery = e.target.value;
+    setQuery(newQuery);
+
+    if (newQuery.trim() === '') {
+      dispatch(clearSearchResults());
+    } else {
+      searchMoviesHandler(newQuery);
     }
   };
 
@@ -52,31 +52,19 @@ function SearchBar() {
           type="text"
           placeholder="Search movies..."
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onFocus={() => setShowResults(true)}
+          onChange={handleInputChange}
         />
-        <button type="button" onClick={searchMoviesHandler}>
+        <button type="button" onClick={() => searchMoviesHandler(query)}>
           Search
         </button>
       </div>
-      {showResults && (
+      {searchResults && searchResults.length > 0 && (
         <ul className={styles.results}>
-          {loading ? (
-            <p>Loading...</p>
-          ) : (
-            searchResults.map((movie) => (
-              <button
-                type="button"
-                key={movie.id}
-                onClick={() => {
-                  handleItemClick(movie);
-                  setQuery('');
-                }}
-              >
-                {movie.title}
-              </button>
-            ))
-          )}
+          {searchResults.map((movie) => (
+            <button type="button" key={movie.id} onClick={() => handleItemClick(movie)}>
+              {movie.title}
+            </button>
+          ))}
         </ul>
       )}
     </div>

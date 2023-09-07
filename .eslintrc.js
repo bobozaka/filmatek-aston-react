@@ -40,5 +40,6 @@ module.exports = {
       },
     ],
     indent: 'off',
+    'react/forbid-prop-types': 'off',
   },
 };

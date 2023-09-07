@@ -10,6 +10,7 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       await logOut();
+      window.location.reload();
       navigate('/');
     } catch (error) {
       console.log(error);
