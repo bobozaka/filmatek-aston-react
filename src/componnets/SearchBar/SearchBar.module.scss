@@ -4,7 +4,7 @@
   align-items: center;
   width: 100%;
   max-width: 300px;
-  position: relative; /* Добавьте позицию relative */
+  position: relative;
 
   input {
     padding: 10px;
@@ -34,7 +34,7 @@
     padding: 0;
     width: 100%;
     position: absolute;
-    top: 100%; 
+    top: 100%;
     left: 0;
     margin: 4px 0;
     border: 1px solid #ccc;

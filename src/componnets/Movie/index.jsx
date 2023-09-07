@@ -70,11 +70,13 @@ function Movie({ item }) {
           type="button"
           onClick={(e) => {
             e.stopPropagation();
+            e.stopPropagation();
             toggleSave();
             e.preventDefault();
           }}
           onKeyPress={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
+              e.stopPropagation();
               e.stopPropagation();
               toggleSave();
               e.preventDefault();

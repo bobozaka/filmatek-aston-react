@@ -27,7 +27,6 @@ function MovieDetail() {
   if (!movie) {
     return <div className={styles.loading}>Loading...</div>;
   }
-
   return (
     <div className={styles.movieDetail_сontainer}>
       <h1>{movie.title}</h1>
