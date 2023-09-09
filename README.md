@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+Flixster
+Сделано приложение для поиска фильмов.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Реализованы следующие требования к функциональности:
 
-## Available Scripts
+1 уровень (необходимый минимум)
+React
+Функциональные компоненты c хуками в приоритете над классовыми: [components]([https://github.com/username/repository-name/tree/branch-name/path/to/file](https://github.com/bobozaka/filmatek-aston-react/tree/main/src/componnets)), pages.
+Есть разделение на умные и глупые компоненты Умные: SearchPanel, Pagination, MovieCard, HistoryItem и т.д. Глупые: Button, SelectField, InputField и т.д.
+Есть рендеринг списков: Main, History, Search, Favorites, SuggestsMovies и т.д.
+Реализована хотя бы одна форма: Login, Registration, SearchPanel.
+Есть применение Контекст API: featureFlag в App.
+Есть применение предохранителя: ErrorBoundary App.
+Есть хотя бы один кастомный хук: useDebounce, useOutside, useReadLocalStorage.
+Хотя бы несколько компонентов используют PropTypes: HistoryItem, Pagination.
+Поиск не должен триггерить много запросов к серверу: useDebounce, использован в компоненте SearchPanel.
+Есть применение lazy + Suspense: Routes.
+Redux
+Используем Modern Redux with Redux Toolkit: store.
+Используем слайсы: authSlice.
+Есть хотя бы одна кастомная мидлвара: authMiddleware.
+Используется RTK Query: favoritesService, historyService, moviesService.
+Используется Transforming Responses: transformResponse of moviesService, transformResponse of historyService, transformResponse of favoritesService.
+2 уровень
+Использован TypeScript.
 
-In the project directory, you can run:
+Использование Firebase для учетных записей пользователей и их Избранного и Истории поиска: config, применение: auth, favorites, history.
 
-### `yarn start`
+Feature Flags. Реализована фича “Поделиться в телеграм”, закрытую под фича флагом.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ Если флаг с этой фичей включен, то у карточки единицы информации должна появиться кнопка “Поделиться”. ShareTelegram;
+ Флаг должен присылаться с локального сервера. Для этого нужно написать простой сервер, который по http-запросу на /api/feature-flags отдаст объект с флагом { isTelegramShareEnabled: true } server;
+ Флаг положить в react context, забрать из контекста в необходимом месте приложения и включить фичу.featureFlag.
+###Deploy link ASTON MOVIES
