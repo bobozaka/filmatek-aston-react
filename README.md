@@ -5,7 +5,7 @@ Flixster
 
 1 уровень (необходимый минимум)
 React
-Функциональные компоненты c хуками в приоритете над классовыми: [components]([https://github.com/username/repository-name/tree/branch-name/path/to/file](https://github.com/bobozaka/filmatek-aston-react/tree/main/src/componnets)), pages.
+Функциональные компоненты c хуками в приоритете над классовыми: [components](https://github.com/username/repository-name/tree/branch-name/path/to/file](https://github.com/bobozaka/filmatek-aston-react/tree/main/src/componnets), pages.
 Есть разделение на умные и глупые компоненты Умные: SearchPanel, Pagination, MovieCard, HistoryItem и т.д. Глупые: Button, SelectField, InputField и т.д.
 Есть рендеринг списков: Main, History, Search, Favorites, SuggestsMovies и т.д.
 Реализована хотя бы одна форма: Login, Registration, SearchPanel.
