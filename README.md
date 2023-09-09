@@ -1,34 +1,39 @@
-Flixster
-Сделано приложение для поиска фильмов.
+# Название проекта
 
-Реализованы следующие требования к функциональности:
+Короткое описание проекта.
 
-1 уровень (необходимый минимум)
-React
-Функциональные компоненты c хуками в приоритете над классовыми: [componnets]([https://github.com/bobozaka/filmatek-aston-react/tree/main/src/componnets)], pages.
-Есть разделение на умные и глупые компоненты Умные: SearchPanel, Pagination, MovieCard, HistoryItem и т.д. Глупые: Button, SelectField, InputField и т.д.
-Есть рендеринг списков: Main, History, Search, Favorites, SuggestsMovies и т.д.
-Реализована хотя бы одна форма: Login, Registration, SearchPanel.
-Есть применение Контекст API: featureFlag в App.
-Есть применение предохранителя: ErrorBoundary App.
-Есть хотя бы один кастомный хук: useDebounce, useOutside, useReadLocalStorage.
-Хотя бы несколько компонентов используют PropTypes: HistoryItem, Pagination.
-Поиск не должен триггерить много запросов к серверу: useDebounce, использован в компоненте SearchPanel.
-Есть применение lazy + Suspense: Routes.
-Redux
-Используем Modern Redux with Redux Toolkit: store.
-Используем слайсы: authSlice.
-Есть хотя бы одна кастомная мидлвара: authMiddleware.
-Используется RTK Query: favoritesService, historyService, moviesService.
-Используется Transforming Responses: transformResponse of moviesService, transformResponse of historyService, transformResponse of favoritesService.
-2 уровень
-Использован TypeScript.
+## Требования к Проекту
 
-Использование Firebase для учетных записей пользователей и их Избранного и Истории поиска: config, применение: auth, favorites, history.
+### 1 уровень (обязательный - необходимый минимум)
 
-Feature Flags. Реализована фича “Поделиться в телеграм”, закрытую под фича флагом.
+- [x]  Реализованы **Требования к функциональности.**
+- [x]  Для хранения учетных записей пользователей, их Избранного и Истории поиска, используем **LocalStorage**. [redux-persist](https://www.npmjs.com/package/redux-persist) библиотеку использовать **нельзя** из-за того, что привнесется большая автоматизация процесса сохранения, и это будет неравносильно затратам по времени других людей, которые используют LocalStorage напрямую.
 
- Если флаг с этой фичей включен, то у карточки единицы информации должна появиться кнопка “Поделиться”. ShareTelegram;
- Флаг должен присылаться с локального сервера. Для этого нужно написать простой сервер, который по http-запросу на /api/feature-flags отдаст объект с флагом { isTelegramShareEnabled: true } server;
- Флаг положить в react context, забрать из контекста в необходимом месте приложения и включить фичу.featureFlag.
-###Deploy link ASTON MOVIES
+### React
+
+- [x]  **Пишем функциональные компоненты c хуками** в приоритете над классовыми.
+- [x]  Есть разделение на **умные и глупые компоненты**. Обратите внимание на [статью от Дэна](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) для подробностей.
+- [x]  Есть **рендеринг списков**. [Документация React](https://ru.reactjs.org/docs/lists-and-keys.html)
+- [x]  Реализована хотя бы одна **форма**. [Документация React](https://ru.reactjs.org/docs/forms.html)
+- [x]  Есть применение **Контекст API**. [Документация React](https://ru.reactjs.org/docs/context.html)
+- [x]  Есть применение **предохранителя**. [Документация React](https://ru.reactjs.org/docs/error-boundaries.html)
+- [x]  Есть хотя бы один **кастомный хук**. [Документация React](https://ru.reactjs.org/docs/hooks-custom.html)
+- [x]  Хотя бы несколько компонентов используют **PropTypes**. [Документация React](https://ru.reactjs.org/docs/typechecking-with-proptypes.html)
+- [x]  Поиск не должен триггерить много запросов к серверу (**debounce**). [FAQ React](https://ru.reactjs.org/docs/faq-functions.html#how-can-i-prevent-a-function-from-being-called-too-quickly-or-too-many-times-in-a-row)
+- [x]  Есть применение **lazy + Suspense**. [Документация React](https://ru.reactjs.org/docs/code-splitting.html#route-based-code-splitting)
+
+### Redux
+
+- [x]  Используем **Modern Redux with Redux Toolkit**. [Документация Redux](https://redux.js.org/tutorials/fundamentals/part-8-modern-redux)
+- [x]  Используем **слайсы**. [Документация Redux](https://redux.js.org/tutorials/fundamentals/part-8-modern-redux#using-createslice)
+- [x]  Есть хотя бы одна **кастомная мидлвара**. [Документация Redux](https://redux.js.org/understanding/history-and-design/middleware)
+- [x]  Используется **RTK Query**. [Документация Redux](https://redux.js.org/tutorials/essentials/part-7-rtk-query-basics)
+- [x]  Используется **Transforming Responses**. [Документация Redux](https://redux.js.org/tutorials/essentials/part-8-rtk-query-advanced#transforming-responses)
+
+## Установка и запуск
+
+Описание процедуры установки и запуска проекта.
+
+## Лицензия
+
+Опишите лицензию вашего проекта.
