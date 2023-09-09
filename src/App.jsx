@@ -12,8 +12,9 @@ const Home = lazy(() => import('./pages/Home'));
 const Login = lazy(() => import('./pages/Login'));
 const Account = lazy(() => import('./pages/Account'));
 const Signup = lazy(() => import('./pages/Signup'));
-
 const MovieDetail = lazy(() => import('./componnets/MovieDetail'));
+const SearchHistoryPage = lazy(() => import('./pages/SearchHistoryPage')); // Добавляем страницу истории поиска
+const SearchPage = lazy(() => import('./pages/SearchPage'));
 
 function App() {
   return (
@@ -60,6 +61,24 @@ function App() {
                 <ProtectedRoute>
                   <Account />
                 </ProtectedRoute>
+              </Suspense>
+            }
+          />{' '}
+          <Route
+            path="/history"
+            element={
+              <Suspense fallback={<Loading />}>
+                <ProtectedRoute>
+                  <SearchHistoryPage />
+                </ProtectedRoute>
+              </Suspense>
+            }
+          />
+          <Route
+            path="/search"
+            element={
+              <Suspense fallback={<Loading />}>
+                <SearchPage />
               </Suspense>
             }
           />

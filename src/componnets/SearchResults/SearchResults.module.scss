@@ -1,0 +1,51 @@
+/* Стили для элемента результатов поиска */
+.searchResults {
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Центрируем элементы по горизонтали */
+  }
+
+  li {
+    width: 300px; /* Фиксированная ширина карточки */
+    margin: 0;
+    display: flex; /* Применяем flex-контейнер к элементу списка */
+    flex-direction: column; /* Отображаем дочерние элементы вертикально */
+    align-items: center; /* Центрируем элементы по горизонтали внутри карточки */
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 1px solid #ccc;
+      padding: 20px;
+      text-align: center;
+      color: #333;
+      transition: transform 0.2s ease-in-out;
+      cursor: pointer;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      h2,
+      p {
+        font-size: 1rem;
+        margin: 5px 0;
+      }
+
+      h2 {
+        color: #3f2b2b;
+      }
+
+      p {
+        color: #770c0c;
+      }
+    }
+  }
+}

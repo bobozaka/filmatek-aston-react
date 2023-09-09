@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom'; // Импортируем Link
 import SavedShows from '../../componnets/SavedShows';
 import styles from './Account.module.scss';
 
@@ -18,6 +18,9 @@ function Account() {
         </div>
       </div>
       <SavedShows />
+      <Link to="/history" className={styles.account__button}>
+        View Search History
+      </Link>
     </>
   );
 }
