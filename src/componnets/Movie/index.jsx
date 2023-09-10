@@ -65,7 +65,7 @@ function Movie({ item }) {
       ) : (
         <div>No Image Available</div>
       )}
-      <div>
+      <div className={styles.movie__card_info}>
         <button
           type="button"
           onClick={(e) => {
@@ -84,6 +84,7 @@ function Movie({ item }) {
         >
           {isSaved ? <FaHeart /> : <FaRegHeart />}
         </button>
+        <p className={styles.movie__card_title}>{item.title}</p>
       </div>
     </div>
   );
