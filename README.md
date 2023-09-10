@@ -1,6 +1,6 @@
 ### Flixster
 
-#Сайт для поиска фильма: [Deploy ](https://github.com/bobozaka/filmatek-aston-react/tree/main/src/componnets)
+#Сайт для поиска фильма: [Deploy ](https://filmatek-aston-react.vercel.app/)
 
 ## Требования к Проекту
 
