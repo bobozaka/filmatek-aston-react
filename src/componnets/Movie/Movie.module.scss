@@ -1,5 +1,3 @@
-/* Movie.module.scss */
-
 .movie__card {
   position: relative;
   flex: 0 0 250px;
@@ -31,8 +29,10 @@
     p {
       margin: 0;
       color: white;
-      text-align: center; /* Добавляем выравнивание текста по центру */
-      padding: 10px; /* Добавляем внутренний отступ */
+      text-align: center;
+      padding: 10px;
+      opacity: 0; 
+      transition: opacity 0.3s; 
     }
 
     button.movie__card_like {
@@ -59,8 +59,13 @@
     > div {
       opacity: 1;
     }
+    
+    p {
+      opacity: 1;
+    }
   }
 }
+
 
 .movie__card_info {
   position: relative;
