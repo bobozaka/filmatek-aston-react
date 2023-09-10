@@ -9,31 +9,14 @@ import {
   deleteDoc,
   getDocs,
 } from 'firebase/firestore';
+import debounce from 'lodash'; // Импортируйте debounce правильно
 import { getAuth } from 'firebase/auth';
 
 const db = getFirestore();
 const auth = getAuth();
-export const saveSearchHistory = async (searchQuery) => {
-  const user = auth.currentUser;
 
-  if (user) {
-    const searchHistoryCollection = collection(db, 'searchHistory');
-    const encodedQuery = encodeURIComponent(searchQuery);
-    const newSearch = {
-      searchQuery,
-      userId: user.uid,
-      timestamp: new Date(),
-      url: `${encodedQuery}`, // Формируем URL с закодированным query
-    };
-
-    try {
-      await addDoc(searchHistoryCollection, newSearch);
-    } catch (error) {
-      console.error('Ошибка при сохранении истории поиска:', error);
-    }
-  }
-};
-export const getSearchHistory = (callback) => {
+// Используйте debounce для функции обратного вызова
+const debouncedGetSearchHistory = debounce((callback) => {
   const user = auth.currentUser;
 
   if (!user) {
@@ -59,7 +42,31 @@ export const getSearchHistory = (callback) => {
   });
 
   return unsubscribe;
+}, 300); // Установите желаемую задержку в миллисекундах (в данном случае 300 мс).
+
+export const saveSearchHistory = async (searchQuery) => {
+  const user = auth.currentUser;
+
+  if (user) {
+    const searchHistoryCollection = collection(db, 'searchHistory');
+    const encodedQuery = encodeURIComponent(searchQuery);
+    const newSearch = {
+      searchQuery,
+      userId: user.uid,
+      timestamp: new Date(),
+      url: `${encodedQuery}`, // Формируем URL с закодированным query
+    };
+
+    try {
+      await addDoc(searchHistoryCollection, newSearch);
+    } catch (error) {
+      console.error('Ошибка при сохранении истории поиска:', error);
+    }
+  }
 };
+
+// Используйте debouncedGetSearchHistory вместо getSearchHistory
+export const getSearchHistory = (callback) => debouncedGetSearchHistory(callback);
 
 export const deleteSearchHistory = async (searchQueryId) => {
   const user = auth.currentUser;
