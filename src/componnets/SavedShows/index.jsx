@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { updateDoc, doc as firestoreDoc, onSnapshot } from 'firebase/firestore';
-import { Link } from 'react-router-dom'; // Импортируйте Link из react-router-dom
+import { Link } from 'react-router-dom';
 import { useUserAuth } from '../../context/AuthContext';
 import { db } from '../../firebase';
 import styles from './SavedShows.module.scss';

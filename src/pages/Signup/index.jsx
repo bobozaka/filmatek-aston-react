@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { isEmail } from 'validator';
+import { fetchSignInMethodsForEmail, getAuth } from 'firebase/auth';
 import { useUserAuth } from '../../context/AuthContext';
 import styles from './Signup.module.scss';
 
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+
   const { signUp } = useUserAuth();
   const navigate = useNavigate();
+  const auth = getAuth();
 
   const handleSumbit = async (e) => {
     e.preventDefault();
@@ -15,13 +20,28 @@ function Signup() {
       alert('Пароль должен содержать не менее 6 символов.');
       return;
     }
+
+    if (!isEmail(email)) {
+      setEmailError('Введите корректный адрес электронной почты.');
+      return;
+    }
+    setEmailError('');
+
     try {
+      const signInMethods = await fetchSignInMethodsForEmail(auth, email);
+
+      if (signInMethods.length > 0) {
+        alert('Этот адрес электронной почты уже используется.');
+        return;
+      }
+
       await signUp(email, password);
       navigate('/');
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <div className={styles.signup__container}>
       <div className={styles.signup__theam} />
@@ -34,12 +54,16 @@ function Signup() {
         <h1 className={styles.signup__form_title}>Sign Up</h1>
         <form onSubmit={handleSumbit} className={styles.signup__form_container}>
           <input
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setEmailError('');
+            }}
             type="email"
             placeholder="Email"
             autoComplete="email"
             className={styles.signup__form_input}
           />
+          {emailError && <p className={styles.signup__form_error}>{emailError}</p>}
           <input
             onChange={(e) => setPassword(e.target.value)}
             type="password"
