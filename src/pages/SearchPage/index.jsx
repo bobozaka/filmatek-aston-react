@@ -17,7 +17,7 @@ function SearchPage() {
       setLoading(true);
       setQuery(newQuery);
 
-      // Здесь выполняется запрос к вашему API или базе данных
+
       try {
         const response = await fetch(`/api/search?query=${newQuery}`);
         if (!response.ok) {
