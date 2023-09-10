@@ -1,39 +1,37 @@
-# Название проекта
+### Flixster
 
-Короткое описание проекта.
+#Сайт для поиска фильма: [Deploy ](https://github.com/bobozaka/filmatek-aston-react/tree/main/src/componnets)
 
 ## Требования к Проекту
 
 ### 1 уровень (обязательный - необходимый минимум)
 
-- [x]  Реализованы **Требования к функциональности.**
-- [x]  Для хранения учетных записей пользователей, их Избранного и Истории поиска, используем **LocalStorage**. [redux-persist](https://www.npmjs.com/package/redux-persist) библиотеку использовать **нельзя** из-за того, что привнесется большая автоматизация процесса сохранения, и это будет неравносильно затратам по времени других людей, которые используют LocalStorage напрямую.
-
 ### React
 
-- [x]  **Пишем функциональные компоненты c хуками** в приоритете над классовыми.
-- [x]  Есть разделение на **умные и глупые компоненты**. Обратите внимание на [статью от Дэна](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) для подробностей.
-- [x]  Есть **рендеринг списков**. [Документация React](https://ru.reactjs.org/docs/lists-and-keys.html)
-- [x]  Реализована хотя бы одна **форма**. [Документация React](https://ru.reactjs.org/docs/forms.html)
-- [x]  Есть применение **Контекст API**. [Документация React](https://ru.reactjs.org/docs/context.html)
-- [x]  Есть применение **предохранителя**. [Документация React](https://ru.reactjs.org/docs/error-boundaries.html)
-- [x]  Есть хотя бы один **кастомный хук**. [Документация React](https://ru.reactjs.org/docs/hooks-custom.html)
-- [x]  Хотя бы несколько компонентов используют **PropTypes**. [Документация React](https://ru.reactjs.org/docs/typechecking-with-proptypes.html)
-- [x]  Поиск не должен триггерить много запросов к серверу (**debounce**). [FAQ React](https://ru.reactjs.org/docs/faq-functions.html#how-can-i-prevent-a-function-from-being-called-too-quickly-or-too-many-times-in-a-row)
-- [x]  Есть применение **lazy + Suspense**. [Документация React](https://ru.reactjs.org/docs/code-splitting.html#route-based-code-splitting)
+- [x]  **Пишем функциональные компоненты c хуками** в приоритете над классовыми. [componnets](https://github.com/bobozaka/filmatek-aston-react/tree/main/src/componnets) ,[pages](https://github.com/bobozaka/filmatek-aston-react/tree/main/src/pages)
+- [x]  Есть разделение на **умные и глупые компоненты**. Обратите внимание на умные  [ProtectedRoute](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/ProtectedRoute.js),[SearchBar](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/SearchBar/index.jsx) [SearchPage](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/pages/SearchPage/index.jsx),[SearchBar](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/SearchBar/index.jsx) глупые [Loading](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/Loading/index.jsx) , [SavedShows](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/SavedShows/index.jsx) ,  [Row](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/Row/index.jsx) 
+- [x]  Есть **рендеринг списков**.  [Row](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/Row/index.jsx) ,[SavedShows](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/SavedShows/index.jsx) ,[SearchResults](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/SearchResults/index.jsx) 
+- [x]  Реализована хотя бы одна **форма**. [SearchBar](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/SearchBar/index.jsx),[Signup](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/pages/Signup/index.jsx),[Login](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/pages/Login/index.jsx)
+- [x]  Есть применение **Контекст API**. [AuthContext](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/context/AuthContext.js)
+- [x]  Есть применение **предохранителя**. [ProtectedRoute](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/ProtectedRoute.js)
+- [x]  Есть хотя бы один **кастомный хук**. [useUserAuth](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/context/AuthContext.js#L45)
+- [x]  Хотя бы несколько компонентов используют **PropTypes**. [Movie]([https://ru.reactjs.org/docs/typechecking-with-proptypes.html](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/Movie/index.jsx)) ,  [Row](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/Row/index.jsx) 
+- [x]  Поиск не должен триггерить много запросов к серверу (**debounce**). [firebaseUtils]((https://github.com/bobozaka/filmatek-aston-react/blob/main/src/firebaseUtils.js))
+- [x]  Есть применение **lazy + Suspense**. [App](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/App.jsx)
 
 ### Redux
 
-- [x]  Используем **Modern Redux with Redux Toolkit**. [Документация Redux](https://redux.js.org/tutorials/fundamentals/part-8-modern-redux)
-- [x]  Используем **слайсы**. [Документация Redux](https://redux.js.org/tutorials/fundamentals/part-8-modern-redux#using-createslice)
-- [x]  Есть хотя бы одна **кастомная мидлвара**. [Документация Redux](https://redux.js.org/understanding/history-and-design/middleware)
-- [x]  Используется **RTK Query**. [Документация Redux](https://redux.js.org/tutorials/essentials/part-7-rtk-query-basics)
-- [x]  Используется **Transforming Responses**. [Документация Redux](https://redux.js.org/tutorials/essentials/part-8-rtk-query-advanced#transforming-responses)
+- [x]  Используем **Modern Redux with Redux Toolkit**. [store](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/redux/store.js)
+- [x]  Используем **слайсы**. [filmsSlice](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/redux/reducers/slices/filmsSlice.js) , [searchResultsSlice](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/redux/reducers/slices/searchResultsSlice.js), [userSlice](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/redux/reducers/slices/userSlice.js)
+- [x]  Есть хотя бы одна **кастомная мидлвара**. [customMiddleware](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/redux/middleware/customMiddleware.js)
+- [x]  Используется **RTK Query**. [api](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/redux/api.js)
+- [x]  Используется **Transforming Responses**. [Transforming Responses api](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/redux/api.js)
 
-## Установка и запуск
+### 2 уровень (необязательный)
 
-Описание процедуры установки и запуска проекта.
+### React
 
-## Лицензия
+- [x]  **Используется Firebase для учетных записей пользователей и их Избранного и Истории поиска authorization, favorites, history. [authorization]((https://github.com/bobozaka/filmatek-aston-react/blob/main/src/context/AuthContext.js#L45)) ,[favorites](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/SavedShows/index.jsx), [history]((https://github.com/bobozaka/filmatek-aston-react/blob/main/src/firebaseUtils.js))
+- 
 
-Опишите лицензию вашего проекта.
+
