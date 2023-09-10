@@ -16,7 +16,7 @@
 - [x]  Есть применение **предохранителя**. [ProtectedRoute](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/ProtectedRoute.js)
 - [x]  Есть хотя бы один **кастомный хук**. [useUserAuth](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/context/AuthContext.js#L45)
 - [x]  Хотя бы несколько компонентов используют **PropTypes**. [Movie]([https://ru.reactjs.org/docs/typechecking-with-proptypes.html](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/Movie/index.jsx)) ,  [Row](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/componnets/Row/index.jsx) 
-- [x]  Поиск не должен триггерить много запросов к серверу (**debounce**). [firebaseUtils]((https://github.com/bobozaka/filmatek-aston-react/blob/main/src/firebaseUtils.js))
+- [x]  Поиск не должен триггерить много запросов к серверу (**debounce**). [firebaseUtils](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/firebaseUtils.js)
 - [x]  Есть применение **lazy + Suspense**. [App](https://github.com/bobozaka/filmatek-aston-react/blob/main/src/App.jsx)
 
 ### Redux
