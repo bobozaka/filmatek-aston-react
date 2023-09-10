@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styles from './SearchResults.module.scss';
 
 function SearchResults() {
-  const searchResults = useSelector((state) => state.app.searchResults); // Изменено на state.app.searchResults
+  const searchResults = useSelector((state) => state.app.searchResults); 
 
   return (
     <div className={styles.searchResults}>
