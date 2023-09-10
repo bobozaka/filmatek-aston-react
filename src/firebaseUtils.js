@@ -9,7 +9,7 @@ import {
   deleteDoc,
   getDocs,
 } from 'firebase/firestore';
-import debounce from 'lodash';
+import debounce from 'lodash/debounce';
 import { getAuth } from 'firebase/auth';
 
 const db = getFirestore();
