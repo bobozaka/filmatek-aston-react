@@ -1,3 +1,5 @@
+/* Movie.module.scss */
+
 .movie__card {
   position: relative;
   flex: 0 0 250px;
@@ -5,7 +7,7 @@
   cursor: pointer;
   overflow: hidden;
   width: 250px;
-
+  
   img {
     width: 100%;
     height: auto;
@@ -25,10 +27,12 @@
     align-items: center;
     opacity: 0;
     transition: opacity 0.3s;
-
+    
     p {
       margin: 0;
       color: white;
+      text-align: center; /* Добавляем выравнивание текста по центру */
+      padding: 10px; /* Добавляем внутренний отступ */
     }
 
     button.movie__card_like {
@@ -56,4 +60,18 @@
       opacity: 1;
     }
   }
+}
+
+.movie__card_info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.movie__card_title {
+  color: white;
+  text-align: center;
+  margin-top: 5px;
 }
