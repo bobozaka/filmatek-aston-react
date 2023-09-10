@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getSearchHistory, deleteSearchHistory, getSearchResults } from '../../firebaseUtils';
-import styles from './SearchHistoryPage.module.scss'; // Импортируйте стили из вашего модуля стилей
+import styles from './SearchHistoryPage.module.scss';
 
 function SearchHistoryPage() {
   const [searchHistory, setSearchHistory] = useState([]);

@@ -11,6 +11,10 @@ function Signup() {
 
   const handleSumbit = async (e) => {
     e.preventDefault();
+    if (password.length < 6) {
+      alert('Пароль должен содержать не менее 6 символов.');
+      return;
+    }
     try {
       await signUp(email, password);
       navigate('/');

@@ -9,13 +9,12 @@ import {
   deleteDoc,
   getDocs,
 } from 'firebase/firestore';
-import debounce from 'lodash'; // Импортируйте debounce правильно
+import debounce from 'lodash';
 import { getAuth } from 'firebase/auth';
 
 const db = getFirestore();
 const auth = getAuth();
 
-// Используйте debounce для функции обратного вызова
 const debouncedGetSearchHistory = debounce((callback) => {
   const user = auth.currentUser;
 
@@ -42,7 +41,7 @@ const debouncedGetSearchHistory = debounce((callback) => {
   });
 
   return unsubscribe;
-}, 300); // Установите желаемую задержку в миллисекундах (в данном случае 300 мс).
+}, 300);
 
 export const saveSearchHistory = async (searchQuery) => {
   const user = auth.currentUser;
@@ -54,7 +53,7 @@ export const saveSearchHistory = async (searchQuery) => {
       searchQuery,
       userId: user.uid,
       timestamp: new Date(),
-      url: `${encodedQuery}`, // Формируем URL с закодированным query
+      url: `${encodedQuery}`,
     };
 
     try {
@@ -65,7 +64,6 @@ export const saveSearchHistory = async (searchQuery) => {
   }
 };
 
-// Используйте debouncedGetSearchHistory вместо getSearchHistory
 export const getSearchHistory = (callback) => debouncedGetSearchHistory(callback);
 
 export const deleteSearchHistory = async (searchQueryId) => {
