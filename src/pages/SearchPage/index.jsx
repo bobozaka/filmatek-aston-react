@@ -16,7 +16,6 @@ function SearchPage() {
     const fetchData = async (newQuery) => {
       setLoading(true);
       setQuery(newQuery);
-
       try {
         const response = await fetch(`/api/search?query=${newQuery}`);
         if (!response.ok) {

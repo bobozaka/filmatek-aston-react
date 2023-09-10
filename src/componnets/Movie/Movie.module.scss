@@ -5,7 +5,7 @@
   cursor: pointer;
   overflow: hidden;
   width: 250px;
-
+  
   img {
     width: 100%;
     height: auto;
@@ -25,10 +25,14 @@
     align-items: center;
     opacity: 0;
     transition: opacity 0.3s;
-
+    
     p {
       margin: 0;
       color: white;
+      text-align: center;
+      padding: 10px;
+      opacity: 0; 
+      transition: opacity 0.3s; 
     }
 
     button.movie__card_like {
@@ -55,5 +59,25 @@
     > div {
       opacity: 1;
     }
+    
+    p {
+      opacity: 1;
+      z-index:1;
+    }
   }
+}
+
+
+.movie__card_info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.movie__card_title {
+  color: white;
+  text-align: center;
+  margin-top: 5px;
 }
