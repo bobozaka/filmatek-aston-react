@@ -1,4 +1,5 @@
 ### Flixster
+### Для просмотра включить впн
 
 #Сайт для поиска фильма: [Deploy ](https://filmatek-aston-react.vercel.app/)
 
